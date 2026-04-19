@@ -1,0 +1,229 @@
+.arena-panel {
+  position: relative;
+  border-radius: var(--radius-xl);
+  padding: 18px;
+  overflow: hidden;
+}
+
+.arena-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(91, 196, 255, 0.12), transparent 24%),
+    radial-gradient(circle at 80% 15%, rgba(255, 120, 136, 0.12), transparent 20%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.arena-head {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.fighter-card {
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.fighter-player {
+  box-shadow: inset 0 0 0 1px rgba(91, 196, 255, 0.12), 0 20px 50px rgba(45, 143, 255, 0.1);
+}
+
+.fighter-enemy {
+  box-shadow: inset 0 0 0 1px rgba(255, 120, 136, 0.12), 0 20px 50px rgba(255, 79, 103, 0.08);
+}
+
+.label {
+  display: inline-block;
+  margin-bottom: 10px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+.hp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.bar-wrap {
+  width: 100%;
+  height: 14px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.bar-fill {
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  transition: width 120ms linear;
+}
+
+.player-fill {
+  background: linear-gradient(90deg, #338dff, #5bc4ff);
+  box-shadow: 0 0 20px rgba(91, 196, 255, 0.35);
+}
+
+.enemy-fill {
+  background: linear-gradient(90deg, #ff5d76, #ff9aa5);
+  box-shadow: 0 0 20px rgba(255, 120, 136, 0.35);
+}
+
+.center-status {
+  text-align: center;
+  padding-inline: 8px;
+}
+
+.result-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 138px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+.time-text {
+  font-size: clamp(1.3rem, 1.8vw, 1.9rem);
+  font-weight: 800;
+}
+
+.canvas-frame {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: calc(var(--radius-xl) - 4px);
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(16, 32, 58, 0.82), rgba(8, 12, 24, 0.96));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+#gameCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.end-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(3, 8, 18, 0.56);
+}
+
+.overlay-card {
+  text-align: center;
+  padding: 28px;
+  border-radius: 24px;
+  min-width: min(420px, calc(100% - 32px));
+}
+
+.overlay-mini {
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  margin-bottom: 8px;
+}
+
+.overlay-card h2 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin-bottom: 10px;
+}
+
+#overlaySubtitle {
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stat-box {
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.stat-label {
+  display: block;
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin-bottom: 6px;
+}
+
+.stat-box strong {
+  font-size: 1.2rem;
+}
+
+.control-list {
+  display: grid;
+  gap: 10px;
+}
+
+.control-list div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.control-list span {
+  color: var(--muted);
+}
+
+kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  padding: 7px 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .arena-head {
+    grid-template-columns: 1fr;
+  }
+
+  .center-status {
+    order: -1;
+  }
+}

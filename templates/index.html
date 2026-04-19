@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arena Shooter RL - Localhost</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/game.css') }}" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar glass">
+      <div>
+        <p class="eyebrow">Arena Shooter RL</p>
+        <h1>Browser combat build</h1>
+      </div>
+      <div class="topbar-actions">
+        <button id="resetBtn" class="btn btn-primary">Reset round</button>
+        <span id="serverStatus" class="pill">Đang kết nối...</span>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="arena-panel glass">
+        <div class="arena-head">
+          <div class="fighter-card fighter-player">
+            <span class="label">PLAYER</span>
+            <div class="hp-row">
+              <span id="playerHpText">100 / 100</span>
+              <span id="playerShield">Shield x1</span>
+            </div>
+            <div class="bar-wrap"><div id="playerHpBar" class="bar-fill player-fill"></div></div>
+          </div>
+
+          <div class="center-status">
+            <div id="resultBadge" class="result-badge">ONGOING</div>
+            <div id="timeText" class="time-text">00.0s</div>
+          </div>
+
+          <div class="fighter-card fighter-enemy">
+            <span class="label">ENEMY</span>
+            <div class="hp-row">
+              <span id="enemyHpText">100 / 100</span>
+              <span id="enemyShield">Shield x1</span>
+            </div>
+            <div class="bar-wrap"><div id="enemyHpBar" class="bar-fill enemy-fill"></div></div>
+          </div>
+        </div>
+
+        <div class="canvas-frame">
+          <canvas id="gameCanvas" width="960" height="960"></canvas>
+          <div id="endOverlay" class="end-overlay hidden">
+            <div class="overlay-card glass-strong">
+              <p class="overlay-mini">Round finished</p>
+              <h2 id="overlayTitle">Win</h2>
+              <p id="overlaySubtitle">Nhấn Reset để chơi tiếp.</p>
+              <button id="overlayResetBtn" class="btn btn-primary">Chơi lại</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="side-panel">
+        <section class="glass info-card">
+          <div class="section-title-row">
+            <h3>Trạng thái</h3>
+            <span id="botType" class="pill subtle">Bot</span>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-box">
+              <span class="stat-label">Projectiles</span>
+              <strong id="projectileCount">0</strong>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">No-dmg streak</span>
+              <strong id="streakCount">0</strong>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Step</span>
+              <strong id="stepCount">0</strong>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Reward</span>
+              <strong id="rewardText">0.00</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="glass info-card">
+          <h3>Điều khiển</h3>
+          <div class="control-list">
+            <div><kbd>W A S D</kbd><span>Di chuyển</span></div>
+            <div><kbd>Mouse</kbd><span>Ngắm bắn</span></div>
+            <div><kbd>Left Click</kbd><span>Bắn</span></div>
+            <div><kbd>Space</kbd><span>Tốc biến</span></div>
+            <div><kbd>Q</kbd><span>Khiên</span></div>
+            <div><kbd>R</kbd><span>Reset round</span></div>
+          </div>
+        </section>
+
+        <section class="glass info-card">
+          <h3>Ghi chú</h3>
+          <ul class="note-list">
+            <li>Game đang dùng logic Python gốc của bạn, chỉ đổi phần hiển thị sang browser.</li>
+            <li>CSS điều khiển toàn bộ layout, HUD, overlay và màu sắc giao diện.</li>
+            <li>Canvas vẽ lại map, nhân vật, đạn, khiên và hiệu ứng phát sáng theo state từ server.</li>
+          </ul>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
